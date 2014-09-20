@@ -5,6 +5,10 @@
 .cache/
 .history/
 .lib/
+.classpath
+.project
+*/.settings/*
+
 dist/*
 target/
 lib_managed/
