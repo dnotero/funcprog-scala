@@ -117,8 +117,22 @@ class ListsSuite extends FunSuite {
   test("sum of a few numbers") {
     assert(sum(List(1,2,0)) === 3)
   }
+
+  test("sum of a empty list returns 0") {
+    assert(sum(List()) === 0)
+  }
   
   test("max of a few numbers") {
     assert(max(List(3, 7, 2)) === 7)
+  }
+
+  test("max of a repeated numbers") {
+    assert(max(List(3, 7, 2, 5, 6, 1, 7)) === 7)
+  }
+
+  test("max of empty list throws NoSuchElementException") {
+    intercept[NoSuchElementException] {
+      max(List())
+    }
   }
 }
