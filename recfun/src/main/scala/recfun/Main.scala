@@ -19,7 +19,34 @@ object Main {
   /**
    * Exercise 2
    */
-  def balance(chars: List[Char]): Boolean = ???
+  def balance(chars: List[Char]): Boolean = {
+    
+    def balance(acc: Int, chars: List[Char]): Boolean = {
+      def valueOf(s: Char) = 
+        if('('.equals(s)) {
+          1
+        } else if(')'.equals(s)) {
+          -1
+        } else {
+          0
+        }
+      }
+
+      if(chars.isEmpty) {
+        acc == 0
+      } else {
+        val c: Char = chars.head
+        if(acc + valueOf(c) < 0) {
+          false
+        } else {
+          balance(acc + valueOf(c), chars.tail)
+        }
+      }
+    }
+
+    balance(0, chars)
+  }
+
 
   /**
    * Exercise 3
