@@ -14,7 +14,17 @@ object Main {
   /**
    * Exercise 1
    */
-  def pascal(c: Int, r: Int): Int = ???
+  def pascal(col: Int, row: Int): Int = {
+    def binomialCoefficient(acc: Int, currCol: Int): Int = {
+      val coefficient = acc * (row + 1 - currCol) / currCol
+
+      if(currCol > col) acc
+      else binomialCoefficient(coefficient, currCol + 1)
+    } 
+
+    if(row < 1) 1
+    else binomialCoefficient(1, 1)
+  }
 
   /**
    * Exercise 2

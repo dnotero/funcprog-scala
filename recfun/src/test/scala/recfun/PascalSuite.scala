@@ -20,7 +20,7 @@ class PascalSuite extends FunSuite {
     assert(pascal(1,3) === 3)
   }
 
-  test("pascal: col=6,row=10") {
-    assert(pascal(6,10) === 252)
+  test("pascal: col=5,row=10") {
+    assert(pascal(5,10) === 252)
   }
 }
