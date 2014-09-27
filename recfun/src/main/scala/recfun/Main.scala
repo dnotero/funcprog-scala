@@ -51,9 +51,9 @@ object Main {
   def countChange(money: Int, coins: List[Int]): Int = {
     def isExactChange = money == 0
     def isNotExactChange = money < 0 || coins.isEmpty
-    
-    if(isExactChange) 1
-    else if(isNotExactChange) 0
+
+    if(isNotExactChange) 0
+    else if(isExactChange) 1
     else countChange(money - coins.head, coins) + countChange(money, coins.tail)
   }
 }
