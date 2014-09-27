@@ -20,28 +20,15 @@ object Main {
    * Exercise 2
    */
   def balance(chars: List[Char]): Boolean = {
-    
-    def balance(acc: Int, chars: List[Char]): Boolean = {
-      def valueOf(s: Char) = 
-        if('('.equals(s)) {
-          1
-        } else if(')'.equals(s)) {
-          -1
-        } else {
-          0
-        }
-      }
+    def valueOf(c: Char): Int = {
+      if(c == '(')1
+      else if(c == ')') -1
+      else 0
+    }
 
-      if(chars.isEmpty) {
-        acc == 0
-      } else {
-        val c: Char = chars.head
-        if(acc + valueOf(c) < 0) {
-          false
-        } else {
-          balance(acc + valueOf(c), chars.tail)
-        }
-      }
+    def balance(acc: Int, chars: List[Char]): Boolean = {
+      if(chars.isEmpty) true
+      else !(acc + valueOf(chars.head) < 0) && balance(acc + valueOf(chars.head), chars.tail)
     }
 
     balance(0, chars)
