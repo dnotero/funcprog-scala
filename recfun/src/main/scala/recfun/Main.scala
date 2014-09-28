@@ -37,7 +37,7 @@ object Main {
     }
 
     def balance(acc: Int, chars: List[Char]): Boolean = {
-      if(chars.isEmpty) true
+      if(chars.isEmpty) acc == 0
       else !(acc + valueOf(chars.head) < 0) && balance(acc + valueOf(chars.head), chars.tail)
     }
 
