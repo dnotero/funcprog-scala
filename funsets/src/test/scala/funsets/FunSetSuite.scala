@@ -186,5 +186,17 @@ class FunSetSuite extends FunSuite {
     }
   }
 
+  test("exists") {
+    new TestSets {
+      assert(exists(union(union(s1, s2), s3), x => x > 0), "all elemets hold the predicate")
+      assert(exists(union(union(s1, s2), s3), x => x != 1), "at least one element holds the predicate")
+    }
+  }
+
+  test("exists doesn't hold for at least one") {
+    new TestSets {
+      assert(!exists(union(union(s1, s2), s3), x => x < 0), "none of the elements hold the predicate")
+    }
+  }
 
 }
