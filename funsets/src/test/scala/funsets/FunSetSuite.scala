@@ -120,6 +120,16 @@ class FunSetSuite extends FunSuite {
     }
   }
 
+  test("intersection of disjoint sets returns empty set") {
+    new TestSets {
+      val u = union(s1, s2)
+      val s = intersect(u, s3)
+      assert(!contains(s, 1), "Union 1")
+      assert(!contains(s, 2), "Union 2")
+      assert(!contains(s, 3), "Union 3")
+    }
+  }
+
   test("diff contains the elements of one set that are not in the second set") {
     new TestSets {
       val u = union(s1, s2)
@@ -130,5 +140,18 @@ class FunSetSuite extends FunSuite {
       assert(!contains(s, 3), "Union 3")
     }
   }
+
+  test("diff of disjoint set returns an empty set") {
+    new TestSets {
+      val u = union(s1, s2)
+      val s = diff(s1, u)
+
+      assert(!contains(s, 1), "Union 1")
+      assert(!contains(s, 2), "Union 2")
+      assert(!contains(s, 3), "Union 3")
+    }
+  }
+
+
 
 }
