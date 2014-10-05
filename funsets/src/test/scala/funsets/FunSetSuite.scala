@@ -174,4 +174,17 @@ class FunSetSuite extends FunSuite {
     }
   }
 
+  test("forall") {
+    new TestSets {
+      assert(forall(union(union(s1, s2), s3), x => x > 0), "all elemets hold the predicate")
+    }
+  }
+
+  test("forall doesn't hold for everyone") {
+    new TestSets {
+      assert(!forall(union(union(s1, s2), s3), x => x != 1), "not all elements hold the predicate")
+    }
+  }
+
+
 }
