@@ -152,6 +152,26 @@ class FunSetSuite extends FunSuite {
     }
   }
 
+  test("filter returns elements for which a predicate holds") {
+    new TestSets {
+      val u = union(union(s1, s2), s3)
+      val s = filter(u, x => x % 2 == 0)
 
+      assert(!contains(s, 1), "Union 1")
+      assert(contains(s, 2), "Union 2")
+      assert(!contains(s, 3), "Union 3")
+    }
+  }
+
+  test("filter empty set when predicate doesn't hold") {
+    new TestSets {
+      val u = union(union(s1, s2), s3)
+      val s = filter(u, x => x < 0)
+
+      assert(!contains(s, 1), "Union 1")
+      assert(!contains(s, 2), "Union 2")
+      assert(!contains(s, 3), "Union 3")
+    }
+  }
 
 }
