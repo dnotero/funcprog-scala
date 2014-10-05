@@ -209,4 +209,33 @@ class FunSetSuite extends FunSuite {
     }
   }
 
+  test("coursera test") {
+    new TestSets {
+      val u = union(
+                    union(
+                      union(
+                        union(
+                          union(singletonSet(1), singletonSet(3)), 
+                          singletonSet(4)
+                        ), 
+                        singletonSet(5)
+                      ), 
+                      singletonSet(7)
+                    ), 
+                    singletonSet(1000)
+                  )
+
+      val mapped = map(u, x => x - 1)
+
+      printSet(u)
+      printSet(mapped)
+      assert(contains(mapped, 0), "doesn't contains 0")
+      assert(contains(mapped, 2), "doesn't contains 2")
+      assert(contains(mapped, 3), "doesn't contains 3")
+      assert(contains(mapped, 4), "doesn't contains 4")
+      assert(contains(mapped, 6), "doesn't contains 6")
+      assert(contains(mapped, 999), "doesn't contains 999")
+    }
+  }
+
 }
