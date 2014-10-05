@@ -199,4 +199,14 @@ class FunSetSuite extends FunSuite {
     }
   }
 
+  test("map returns a set which members are the double of other") {
+    new TestSets {
+      val result = map(singletonSet(4), x => 2 * x)
+
+      assert(contains(result,8), "none of the elements hold the predicate")
+      assert(!contains(result,4), "none of the elements hold the predicate")
+      assert(!contains(result,3), "none of the elements hold the predicate")
+    }
+  }
+
 }
