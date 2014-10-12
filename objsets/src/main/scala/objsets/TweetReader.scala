@@ -37,7 +37,7 @@ object TweetReader {
     val buf = new StringBuffer
     for (tw <- tws) {
       val json = "{ \"user\": \"" + tw.user + "\", \"text\": \"" +
-                                    tw.text.replaceAll(""""""", "\\\\\\\"") + "\", \"retweets\": " +
+                                    tw.text.replaceAll(""""""", "\\\\\\\"") + "\", \"retweets\": " + 
                                     tw.retweets + ".0 }"
       buf.append(json + ",\n")
     }
