@@ -69,4 +69,18 @@ class TweetSetSuite extends FunSuite {
       assert(trends.head.user == "a" || trends.head.user == "b")
     }
   }
+
+  test("mostRetweeted: empty tweetset throws NoSuchElementException") {
+    new TestSets {
+      intercept[NoSuchElementException] {
+        set1.mostRetweeted
+      }
+    }
+  }
+
+  test("mostRetweeted: returns a") {
+    new TestSets {
+      assert(set5.mostRetweeted.user === "a")
+    }
+  }
 }

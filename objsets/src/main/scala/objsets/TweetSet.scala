@@ -66,7 +66,8 @@ abstract class TweetSet {
    * Question: Should we implment this method here, or should it remain abstract
    * and be implemented in the subclasses?
    */
-  def mostRetweeted: Tweet = ???
+  def mostRetweeted: Tweet
+  def mostRetweeted(max: Tweet): Tweet
 
   /**
    * Returns a list containing all tweets of this set, sorted by retweet count
@@ -114,6 +115,9 @@ class Empty extends TweetSet {
 
   def union(that: TweetSet): TweetSet = that
 
+  def mostRetweeted: Tweet = throw new NoSuchElementException("Empty.mostRetweeted")
+  def mostRetweeted(max: Tweet) = max
+
   /**
    * The following methods are already implemented
    */
@@ -135,6 +139,13 @@ class NonEmpty(elem: Tweet, left: TweetSet, right: TweetSet) extends TweetSet {
   }
 
   def union(that: TweetSet): TweetSet = this.filterAcc(_ => true, that)
+
+  def mostRetweeted: Tweet = mostRetweeted(elem)
+
+  def mostRetweeted(max: Tweet) = {
+    if(elem.retweets > max.retweets) right.mostRetweeted(left.mostRetweeted(elem))
+    else right.mostRetweeted(left.mostRetweeted(max))
+  }
 
   /**
    * The following methods are already implemented
