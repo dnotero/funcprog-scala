@@ -70,6 +70,14 @@ class TweetSetSuite extends FunSuite {
     }
   }
 
+  test("descendingByRetweet: Empty set returns Nil list") {
+    new TestSets {
+      val tweets = set1.descendingByRetweet
+      assert(tweets.isEmpty)
+      assert(tweets === Nil)
+    }
+  }
+
   test("mostRetweeted: empty tweetset throws NoSuchElementException") {
     new TestSets {
       intercept[NoSuchElementException] {
